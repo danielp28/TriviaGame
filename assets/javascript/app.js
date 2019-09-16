@@ -2,8 +2,7 @@
 $( document ).ready(function() {
 
     // this game object holds all of the questions, possible answers, and then the index of the correct answer for each
-        var game = {
-            questions: [
+           var questions = [
             {
                    question: 'What is the capital of Vermont?',
                    possibles: ['Battleboro', 'Montpelier', 'Barre City', 'Burlington'],
@@ -66,54 +65,33 @@ $( document ).ready(function() {
                 id: 'question-twelve',
                 answer: 4
             }
-            ]}
+            ]
     
-        // test
-        var message = 'Game Over!';
-        // var $message = $('#message');
-        // test
     
-    // This initializes the button that starts the game 
-        $(".startGame").on("click", function (){
-    // when the start button clicked, the div with the questions that was hidden is shown
-            $('.wrapper').show();
-            console.log('hello');
-    
-            $(this).hide();
-        });
-    
-        // These events start the timer: set the number of seconds the guesser has 
-        var number = 60;
+        
+        var timeRemaining = 60;
         $('#time-remaining').on('click', run);
     
-        // This function enables the number of seconds to decrease with time, and to display
+        // This function enables the timeRemaining of seconds to decrease with time, and to display
         // the result of that decrease until time is up. 
         function decrement(){
-            // Decrease number by one.
-            number--;
-            // Show the number in the #time-remaining div.
-            $('#time-remaining').html('<h2>' + number + " seconds"+'</h2>');
-            // When the number is equal to zero, 
-            if (number === 0){
+            // Decrease timeRemaining by one.
+            timeRemaining--;
+            // Show the timeRemaining in the #time-remaining div.
+            $('#time-remaining').text(timeRemaining + " seconds");
+            // When the timeRemaining is equal to zero, 
+            if (!timeRemaining){
             // run the stop function.
             stop();
             // Alert the user that time is up. Update the innerHTML of the message
            // div to say 'Game Over!'
-            // alert('Time Up!')
-           lalert('time up!');
+            alert('time up!');
             checkAnswers();
             }
         }
-        // test
-        // writes the win or lose message 
-            // function writeMessage (){
-            // 	// updates the contents of the message div
-            // 	$message.html(message);
-            // }
-        // test
-    
+        
         // the run function sets the spacing of the decrement function's time interval so that
-        // it can be equal to a second per number decrement.
+        // it can be equal to a second per timeRemaining decrement.
         function run(){
             counter = setInterval(decrement, 1000);
         }
@@ -132,7 +110,7 @@ $( document ).ready(function() {
     function formTemplate(data) {
     // the first variable relates the form field for question with the data in the object for
     // each question so that the questions can be inputed into that form field
-        var qString = "<form id='questionOne'>"+ data.question +"<br>";
+        var qString = "<form id='questionOne'>"+ data.question + "<br>" ;
     // this variable to access the question object's possibles array needed to answer each question
         var possibles = data.possibles;
     // a for loop to go through the possibles array for each question to add the values of each possibles
@@ -141,19 +119,23 @@ $( document ).ready(function() {
         for (var i = 0; i < possibles.length; i++) {
             var possible = possibles[i];
             console.log(possible);
-            qString = qString + "<input type='radio' name='"+data.id+"' value="+ i +">"+possible;
+            qString = qString + "<input type='radio' name="+data.id+" value="+ i +">"+possible;
     
         }
-        return qString + "</form>";
+        return qString + "</form> <br>";
     }
     window.formTemplate = formTemplate;
     
     // this function takes the template created in the last function and by appending it,
     // allows it to be displayed on the page
     function buildQuestions(){
+        var questions2 = questions;
+        for (var i = 0; 4 < questions2.length; i++){
+        questions2.splice(Math.floor(Math.random()*questions2.length), 1)
+        }
         var questionHTML = ''
-        for (var i = 0; i<game.questions.length; i++) {
-            questionHTML = questionHTML + formTemplate(game.questions[i]);
+        for (var i = 0; i<questions2.length; i++) {
+            questionHTML = questionHTML + formTemplate(questions2[i]);
         }
         $('#questions').append(questionHTML);
     
@@ -170,19 +152,10 @@ $( document ).ready(function() {
     // call the buildQuestions function
     buildQuestions();
     
-    // function to build the display of guesser results
-    function resultsTemplate(question){
-        var htmlBlock = '<div>'
-        htmlBlock = htmlBlock + question.question + ': ' + isChecked;
-        return htmlBlock + "</div>";
-    }
-    
     // function to tabulate the guesser results
     function checkAnswers (){
     
     // variables needed to hold results
-        var resultsHTML = '';
-        var guessedAnswers = [];
         var correct = 0;
         var incorrect = 0;
         var unAnswered =0
@@ -190,14 +163,14 @@ $( document ).ready(function() {
     // for loop iterates through each question and passes the questions at each index first into
     // the isCorrect function to see if they match the indices of correct answers, and if they do,
     // increments up the correct score
-        for (var i = 0; i<game.questions.length; i++) {
-            if (isCorrect(game.questions[i])) {
+        for (var i = 0; i<questions.length; i++) {
+            if (isCorrect(questions[i])) {
                 correct++;
             } else {
     // then this statement runs the questions at each index through the checkAnswered function
     // to determine whether the user clicked an answer, or did not click an answer, so that
     // incorrect and unAnswered scores can be delineated from each other
-                if (checkAnswered(game.questions[i])) {
+                if (checkAnswered(questions[i])) {
                     incorrect++;
                 } else {
                     unAnswered++;
