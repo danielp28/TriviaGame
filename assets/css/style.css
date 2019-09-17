@@ -1,3 +1,14 @@
 .main-content{
     text-align:center;
+    background-color:rgba(255, 255, 255, 0.521); 
+    
+}
+body{
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position: center center
+}
+.face{
+    height:150px;
+    width:150px;
 }

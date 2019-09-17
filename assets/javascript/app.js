@@ -4,67 +4,58 @@ $( document ).ready(function() {
     // this game object holds all of the questions, possible answers, and then the index of the correct answer for each
            var questions = [
             {
-                   question: 'What is the capital of Vermont?',
-                   possibles: ['Battleboro', 'Montpelier', 'Barre City', 'Burlington'],
+                   question: 'WHERE WAS ARNOLD BORN?',
+                   possibles: ['GERMANY', 'AUSTRIA', 'AMERICA', 'NORWAY'],
                    id: 'question-one',
                    answer: 1
             }, {
-                question: 'What is the capital of Illinois?',
-                possibles: ['Springfield', 'Chicago', 'Rockford', 'Joliet', 'Evanston'],
+                question: 'WHAT YEAR DID ARNOLD BECOME GOVERNER OF CALIFORNIA?',
+                possibles: ['2003', '1999', '2012', '2005', '2002'],
                 id: 'question-two',
                 answer: 0
             }, {
-                question: 'What is the capital of California?',
-                possibles: ['San Francisco', 'Los Angeles', 'Mendocino', 'San Diego', 'Sacramento'],
+                question: 'WHAT YEAR DID ARNOLD START ACTING?',
+                possibles: ['1971', '1960', '1955', '1998', '1969'],
                 id: 'question-three',
                 answer: 4
             }, {
-                question: 'What is the capital of Indiana?',
-                possibles: ['Fort Wayne', 'Indianapolis', 'Terre Haute', 'Bloomington', 'Indianapolis'],
+                question: 'WHAT WAS ARNOLDS FIRST MOVIE ROLE?',
+                possibles: ['TERMINATOR', 'HERCULES IN NEW YORK', 'RUNNING MAN', 'CONAN THE BARBARIAN', 'CONAN THE DESTROYER'],
                 id: 'question-four',
                 answer: 1
             }, {
-                question: 'What is the capital of Alabama?',
-                possibles: ['Montgomery', 'Birmingham', 'Mobile', 'Tuscaloosa', 'Gulf Shores'],
+                question: 'HOW MANY TIMES HAS ARNOLD WON MR. OLYMPIA?',
+                possibles: ['SEVEN', 'FIVE', 'ONE', 'THREE', 'TEN'],
                 id: 'question-five',
                 answer: 0
             }, {
-                question: 'What is the capital of Colorado?',
-                possibles: ['Boulder', 'Denver', 'Vale', 'Fort Collins', 'Grand Junction'],
+                question: 'WHAT IS ARNOLDS HIGHEST GROSSING FILM?',
+                possibles: ['TERMINATOR', 'TERMINATOR 2', 'KINDERGARDEN COP', 'PREDATOR', 'TWINS'],
                 id: 'question-six',
                 answer: 1
     
             }, {
-                question: 'What is the capital of Delaware?',
-                possibles: ['Wilmington', 'Newark', 'Dover', 'Lewes', 'Middletown'],
+                question: 'WHAT IS THE BEST ARNOLD QUOTE OF ALL TIME?',
+                possibles: ['DILLON', 'PUT THAT COOKIE DOWN', 'THE ICE AGE!!', 'CROM LAUGHS AT YOUR FOUR WINDS', 'ALL OF THEM YOU IDIOT'],
                 id: 'question-seven',
-                answer: 2
-            }, {
-                question: 'What is the capital of Florida?',
-                possibles: ['Miami', 'Tampa', 'Jacksonville', 'Daytona Beach', 'Talahassee'],
-                id: 'question-eight',
                 answer: 4
             }, {
-                question: 'What is the capital of Idaho?',
-                possibles: ['Coeur dAlene', 'Idaho Falls', 'Boise', 'Meridian', 'Twin Falls'],
+                question: 'HOW OLD IS ARNOLD?',
+                possibles: ['50', '80', '72', '45', '87'],
+                id: 'question-eight',
+                answer: 2
+            }, {
+                question: 'WHAT YEAR DID ARNOLD IMMIGRATE TO THE US?',
+                possibles: ['1982', '2001', '1968', '1986', '2019'],
                 id: 'question-nine',
                 answer: 2
             }, {
-                question: 'What is the capital of Michigan?',
-                possibles: ['Macinack Island', 'Lansing', 'Grand Rapids', 'Ann Arbor', 'Flint'],
+                question: 'HOW MUCH IS ARNOLDS DEADLIFT RECORD?',
+                possibles: ['690 LBS', '710 LBS', '500 LBS', '980 LBS', '460 LBS'],
                 id: 'question-ten',
                 answer: 1
-            }, {
-                question: 'What is the capital of Washington State?',
-                possibles: ['Seattle', 'Bellevue', 'Spokane', 'Olympia', 'Bellingham'],
-                id: 'question-eleven',
-                answer: 3
-            }, {
-                question: 'What is the best kind of coffee?',
-                possibles: ['Intelligentsia', 'Blue Bottle', 'Starbucks', 'Caribou', 'none of the above'],
-                id: 'question-twelve',
-                answer: 4
-            }
+            }, 
+    
             ]
     
     
@@ -204,6 +195,7 @@ $( document ).ready(function() {
     // create a function with an onclick event for the doneButton that both checks the Answers 
     // and stops the clock when "done" button is pressed
         $('#finish').on('click', function() {
+            document.body.style.backgroundImage = "url('https://www.insidehook.com/wp-content/uploads/2019/03/Arnold_Header_1496168849.jpg?fit=1200%2C750')";
         checkAnswers();
         stop();
         alert("Game Over!");
